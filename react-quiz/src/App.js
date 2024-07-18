@@ -1,8 +1,10 @@
 // import DateCounter from "./DateCounter";
-
 import Header from "./Header";
 import Main from "./Main";
+import Loader from "./Loader";
+import Error from "./Error";
 import { useEffect, useReducer } from "react";
+import StartScreen from "./StartScreen";
 
 const initialState = {
   questions: [],
@@ -33,7 +35,7 @@ function reducer(state, action) {
 
 //useReducer to store that data in state
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{questions, status}, dispatch] = useReducer(reducer, initialState);
 
   //Used useEffect to fetch data on an initial render
   useEffect(function () {
@@ -49,8 +51,14 @@ export default function App() {
       <Header />
 
       <Main >
-        <p>1/15</p>
-        <p>Question?</p>
+        {status === "loading" && 
+        <Loader />}
+
+        {status === "error" &&
+        <Error />}
+
+        {status === "ready" &&
+        <StartScreen />}
       </Main>
 
     </div>
