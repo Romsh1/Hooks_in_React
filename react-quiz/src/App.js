@@ -1,6 +1,7 @@
 // import DateCounter from "./DateCounter";
 
 import Header from "./Header";
+import Main from "./Main";
 
 export default function App() {
   return ( 
@@ -8,10 +9,10 @@ export default function App() {
       {/* <DateCounter /> */}
       <Header />
 
-      <main className="main" >
+      <Main >
         <p>1/15</p>
         <p>Question?</p>
-      </main>
+      </Main>
 
     </div>
   );
