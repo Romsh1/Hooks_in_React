@@ -26,8 +26,14 @@ function reducer(state, action) {
     case 'dataFailed':
       return {
         ...state,
-        state: "error",
+        status: "error",
       };
+
+    case 'start':
+      return {
+        ...state, 
+        status: "active",
+      }
 
     default:
       throw new Error("Action unknown");
@@ -36,7 +42,8 @@ function reducer(state, action) {
 
 //useReducer to store that data in state
 export default function App() {
-  const [{questions, status}, dispatch] = useReducer(reducer, initialState);
+  const [{questions, status}, dispatch] = useReducer(reducer, 
+    initialState);
 
   const numQuestions = questions.length;
 
@@ -62,7 +69,7 @@ export default function App() {
 
         {status === "ready" &&
         <StartScreen numQuestions = 
-          {numQuestions} />}
+          {numQuestions} dispatch={dispatch} />}
         {status === "active" && <Question />}
       </Main>
 
