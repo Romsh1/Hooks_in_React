@@ -31,7 +31,7 @@ function reducer(state, action) {
   }
 }
 
-//useReducer to store that data
+//useReducer to store that data in state
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
