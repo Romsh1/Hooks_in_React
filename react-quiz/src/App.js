@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { useEffect, useReducer } from "react";
 import StartScreen from "./StartScreen";
+import Question from "./Question";
 
 const initialState = {
   questions: [],
@@ -62,6 +63,7 @@ export default function App() {
         {status === "ready" &&
         <StartScreen numQuestions = 
           {numQuestions} />}
+        {status === "active" && <Question />}
       </Main>
 
     </div>
