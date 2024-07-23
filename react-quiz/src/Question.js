@@ -1,9 +1,9 @@
-import StartScreen from "./StartScreen";
+function Question({ question }) {
+    console.log(question);
 
-function Question() {
     return (
         <div>
-            <p>Question</p>
+            <h4>{question.question}</h4>
         </div>
     );
 }
