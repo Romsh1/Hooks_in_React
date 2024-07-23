@@ -1,4 +1,4 @@
-function Options() {
+function Options({ question }) {
     return (
         <div className="options">
             {question.options.map(option => <button
@@ -8,3 +8,5 @@ function Options() {
     </div>
     );
 }
+
+export default Options
