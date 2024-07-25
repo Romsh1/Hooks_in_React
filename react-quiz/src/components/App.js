@@ -70,6 +70,10 @@ export default function App() {
     initialState);
 
   const numQuestions = questions.length;
+  const maxPossiblePoints = questions.reduce(
+    (prev, curr) => prev + curr.points,
+    0
+  );
 
   //Used useEffect to fetch data on an initial render
   useEffect(function () {
@@ -101,6 +105,7 @@ export default function App() {
             index={index} 
             numQuestion={numQuestions}
             points={points}
+            maxPossiblePoints={maxPossiblePoints}
           />
 
           <Question 
