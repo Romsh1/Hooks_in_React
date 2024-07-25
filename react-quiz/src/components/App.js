@@ -55,6 +55,7 @@ function reducer(state, action) {
         return {
           ...state,
           index: state.index + 1,
+          answer: null,
         };
 
     default:
