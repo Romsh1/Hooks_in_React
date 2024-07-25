@@ -7,6 +7,7 @@ import { useEffect, useReducer } from "react";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
 import NextButton from "../NextButton";
+import Progress from "./Progress";
 
 const initialState = {
   questions: [],
@@ -65,7 +66,7 @@ function reducer(state, action) {
 
 //useReducer to store that data in state
 export default function App() {
-  const [{questions, status, index, answer}, dispatch] = useReducer(reducer, 
+  const [{questions, status, index, answer, points}, dispatch] = useReducer(reducer, 
     initialState);
 
   const numQuestions = questions.length;
@@ -96,6 +97,12 @@ export default function App() {
 
         {status === "active" && (
           <>
+          <Progress 
+            index={index} 
+            numQuestion={numQuestions}
+            points={points}
+          />
+
           <Question 
             question = {questions[index]} 
             dispatch={dispatch} 
