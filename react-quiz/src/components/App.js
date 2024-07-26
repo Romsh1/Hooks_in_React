@@ -15,7 +15,7 @@ const initialState = {
 
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
-  index: 14,
+  index: 10,
   answer: null,
   points: 0,
   highscore: 0
@@ -78,7 +78,7 @@ function reducer(state, action) {
 
 //useReducer to store that data in state
 export default function App() {
-  const [{questions, status, index, answer, points}, dispatch] = useReducer(reducer, 
+  const [{questions, status, index, answer, points, highscore}, dispatch] = useReducer(reducer, 
     initialState);
 
   const numQuestions = questions.length;
@@ -137,7 +137,8 @@ export default function App() {
 
         {status === 'finished' && (
           <FinishScreen points={points} maxPossiblePoints=
-          {maxPossiblePoints} />
+          {maxPossiblePoints} 
+          highscore={highscore}/>
           )}
       </Main>
     </div>
