@@ -9,16 +9,19 @@ import Question from "./Question";
 import NextButton from "../NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import Timer from "../Timer ";
+import Footer from "../Footer";
 
 const initialState = {
   questions: [],
 
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
-  index: 14,
+  index: 1,
   answer: null,
   points: 0,
-  highscore: 0
+  highscore: 0,
+  secondsRemaining: 5,
 };
 
 function reducer(state, action) {
@@ -78,6 +81,15 @@ function reducer(state, action) {
           status: "ready"
         }
 
+      case 'tick':
+        return {
+          ...state,
+          secondsRemaining: state.secondsRemaining - 1,
+          status: state.secondsRemaining === 0 ?
+          'finished' : state.status,
+
+        }
+
     default:
       throw new Error("Action unknown");
   }
@@ -85,7 +97,9 @@ function reducer(state, action) {
 
 //useReducer to store that data in state
 export default function App() {
-  const [{questions, status, index, answer, points, highscore}, dispatch] = useReducer(reducer, 
+  const [{questions, status, index, answer, points, highscore,
+    secondsRemaining
+  }, dispatch] = useReducer(reducer, 
     initialState);
 
   const numQuestions = questions.length;
@@ -135,7 +149,9 @@ export default function App() {
             />
 
             <Footer>
-              <Timer />
+              <Timer
+              dispatch={dispatch}
+              secondsRemaining={secondsRemaining} />
 
               <NextButton 
                 dispatch={dispatch}
