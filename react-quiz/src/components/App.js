@@ -133,12 +133,18 @@ export default function App() {
               dispatch={dispatch} 
               answer={answer} 
             />
-            <NextButton 
-              dispatch={dispatch}
-              answer = {answer} 
-              numQuestion={numQuestions}
-              index={index}
-            />
+
+            <Footer>
+              <Timer />
+
+              <NextButton 
+                dispatch={dispatch}
+                answer = {answer} 
+                numQuestion={numQuestions}
+                index={index}
+              />
+            </Footer>
+
           </>
         )}
 
